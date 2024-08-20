@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+
+  <h2>기본선택자 이용해서 요소 선택</h2>
+
+  <div id="box" class="wrap">box</div>
+
+  <script>
+    $(document).ready(function() {
+      console.log('------- 기본선택자 이용해서 요소 선택 --------');
+      // 태그
+      console.log( $('div') );    // document.getElementsByTagName('div')
+      // 아이디
+      console.log( $('#box') );   // document.getElementById('box')
+      // 클래스
+      console.log( $('.wrap') );  // document.getElementsByClassName('wrap')
+    })
+  </script>
+
+  <h2>input의 type을 이용한 선택자로 요소 선택</h2>
+
+  <input type="text"> <br>
+  <input type="password"> <br>
+
+  <input type="radio" id="radio1" checked> ra1 <br>
+  <input type="radio" id="radio2"> ra2 <br>
+
+  <input type="checkbox" id="check1"> chk1 <br>
+  <input type="checkbox" id="check2" checked> chk2 <br>
+
+  <input type="submit">
+  <input type="submit" disabled> <br>
+
+  <select>
+    <option>A</option>
+    <option>B</option>
+  </select>
+
+  <script>
+    $(document).ready(function(){
+      console.log('----- type 선택자 이용해서 요소 선택 -----');
+      console.log( $(':text') );
+      console.log( $(':password') );
+      console.log( $(':radio') );
+      console.log( $(':checkbox') );
+      console.log( $(':submit') );
+    })
+  </script>
+
+
+  
+</body>
+</html>

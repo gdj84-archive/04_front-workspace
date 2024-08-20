@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <!-- 1) 파일 다운받아서 연결 -->
+  <!-- <script src="../assets/lib/jquery-3.7.1.min.js"></script> -->
+
+  <!-- 2) CDN 방식으로 연결 -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+  <!-- 
+    * jQuery
+      1. JavaScript 복잡한 구문을 보다 간소화해서 사용할 수 있도록 만들어진 라이브러리(.js)
+      2. 존 레식이 개발
+      3. 장점
+         1) DOM 객체와 관련한 스크립트를 보다 쉽게 구현할 수 있음
+         2) AJAX(비동기식통신), 이벤트 처리 등 폭넓게 지원
+         3) jQuery와 관련된 확장형 플러그인, 오픈 API 등이 제공
+            (차트, 캘린더, 슬라이드, 애니메이션 등)
+      4. jQuery 라이브러리(.js)를 html문서에 포함해야 사용 가능
+         > 제공 사이트 : http://jquery.com
+           ㄴ compressed   : *.min.js, 주석/들여쓰기 등이 다 제거된 배포버전
+           ㄴ uncompressed : *.js, 가시성이 그대로 유지되어있는 버전
+
+         1) 파일을 직접 다운받아서 포함시키기
+         2) 별도의 다운없이 CDN 방식을 이용해서 포함시키기 (인터넷이 되어야됨)
+  -->
+
+  <script>
+    /*
+      * script 작성위치 상관없이 요소 선택이 잘 되려면
+        1) JavaScript 방식  : 문서상에 단 한개만 존재 가능
+           window.onload = function() {
+              요소 선택 및 조작
+           }
+
+        2) jQuery 방식 : 여러개 존재 가능, 방식도 3가지 존재
+           jQuery(document).ready(function() {
+              요소 선택 및 조작
+           })
+           $(document).ready(function() {
+              요소 선택 및 조작
+           })
+           $(function() {
+              요소 선택 및 조작
+           })
+           
+    */
+    window.onload = function() {
+      console.log('window.onload 구문 실행됨1');
+    }
+    window.onload = function() { // 해당 function 만 실행됨
+      console.log('window.onload 구문 실행됨2');
+
+      // javascript 방식으로 요소선택
+      const scriptEl = document.getElementById('javascript-test');
+      console.log(scriptEl);
+
+      // javascript 방식으로 문구 및 스타일 변경 : property에 접근해서 대입하는 방식
+      scriptEl.innerHTML = 'javascript방식으로 문구변경';
+      scriptEl.style.backgroundColor = 'red';
+    }
+    jQuery(document).ready(function() {
+      console.log('document ready 구문 실행됨1');
+    })
+    $(document).ready(function() {
+      console.log('document ready 구문 실행됨2');
+    })
+    $(function() {
+      console.log('document ready 구문 실행됨3');
+
+      // jQuery 방식으로 요소선택
+      const jQueryEl = $('#jQuery-test');
+      console.log(jQueryEl);
+
+      // jQuery 방식으로 문구 및 스타일 변경 : jQuery용 메소드를 이용해서 변경 
+      jQueryEl.html('jQuery 방식으로 문구변경');
+      jQueryEl.css('backgroundColor', 'green');
+    })
+  </script>
+
+  <div id="javascript-test">javascript방식으로 선택</div>
+  <div id="jQuery-test">jQuery방식으로 선택</div>
+
+  <script>
+    /*
+      * jQuery Wrapper
+        1. jQuery가 지원하는 기능을 사용하기 위해서는 DOM객체가 jQuery용객체로 변환되어야됨
+        2. jQuery 객체 만들기
+           1) jQuery()
+           2) $()
+        3. 예시
+           JavaScript : document.getElementById('box')
+           jQuery     : $(document.getElementById('box'))
+                        $('#box')
+    */
+    $(document).ready(function() {
+      const box = document.getElementById('box');
+      // box.innerHTML = '안녕하세요';
+      // box.style.color = 'red';
+
+      $(box).html('안녕하세요');
+      $(box).css('color', 'red');
+    })
+  </script>
+
+  <div id="box">box</div>
+  
+
+
+
+
+
+</body>
+</html>
