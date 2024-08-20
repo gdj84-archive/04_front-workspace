@@ -40,7 +40,7 @@
 
   <select>
     <option>A</option>
-    <option>B</option>
+    <option selected>B</option>
   </select>
 
   <script>
@@ -51,6 +51,80 @@
       console.log( $(':radio') );
       console.log( $(':checkbox') );
       console.log( $(':submit') );
+
+      console.log('---- 상태선택자 이용해서 요소 선택 -----');
+      console.log( $(':radio:checked') );
+      console.log( $(':checkbox:checked') );
+      console.log( $(':text:focus') );
+      console.log( $(':submit:enabled') );
+      console.log( $(':submit:disabled') );
+      console.log( $('option:selected') ); // css 선택자로 사용불가
+
+      console.log('---- is 메소드 이용해서 상태 확인 ----');
+      console.log( $(':text').is(':focus') );
+      console.log( $('#radio1').is(':checked') );
+      console.log( $('#radio2').is(':checked') );
+      // jQuery요소객체.is('선택자') : 해당 요소가 선택자에 만족할경우 true/ 아니면 false반환
+
+    })
+  </script>
+
+  <h2>탐색메소드(Traversing) 이용해서 요소 선택</h2>
+  <ul class="ott">
+    <li id="netflix"><a href="#">넷플릭스</a></li>
+    <li id="disney"><a href="#">디즈니플러스</a></li>
+    <li id="tving"><a id="tving-link" href="#">티빙</a></li>
+    <li id="wave"><a href="#">웨이브</a></li>
+    <li id="coupang"><span>쿠팡플레이</span></li>
+  </ul>
+
+  <script>
+    $(document).ready(function() {
+      // * 자손 및 후손 : Descendants Traversing
+      // 1) 자손
+      console.log('---- 자손 탐색 메소드 이용해서 요소 선택 ----');
+      console.log( $('.ott > li') );  // 선택자
+      console.log( $('.ott').children() );
+      console.log( $('.ott').children().children('a') );
+      // - 요소.children(['선택자']) : 해당 요소의 자손들 선택
+
+      // 2) 후손
+      console.log('---- 후손 탐색 메소드 이용해서 요소 선택 ----');
+      console.log( $('.ott a') );  // 선택자
+      console.log( $('.ott').find('a') );
+      console.log( $('.ott').find() ); // 제대로 선택안됨
+      // - 요소.find('선택자') : 해당 요소의 하위요소들 중 선택자에 만족하는 요소 선택
+
+      // * 동위 관계 : Sideways Traversing
+      // 1) 일반형제
+      console.log('---- 일반형제 탐색 메소드 이용해서 요소 선택 ----');
+      console.log( $('#tving ~ li') );  // 선택자
+      console.log( $('#tving').nextAll() );
+      console.log( $('#tving').prevAll() );
+      console.log( $('#tving').siblings() );
+      console.log( $('#tving').siblings('#disney') );
+      // - 요소.nextAll(['선택자']) : 요소의 다음 형제들 선택 
+      // - 요소.prevAll(['선택자']) : 요소의 이전 형제들 선택
+      // - 요소.siblings(['선택자']): 요소의 모든 형제들 선택
+
+      // 2) 인접형제
+      console.log('---- 인접형제 탐색 메소드 이용해서 요소 선택 ----');
+      console.log( $('#tving + li') );  // 선택자
+      console.log( $('#tving').next() );
+      console.log( $('#tving').prev() );
+      // - 요소.next(['선택자']) : 요소의 바로 다음 형제 하나만 선택
+      // - 요소.prev(['선택자']) : 요소의 바로 이전 형제 하나만 선택
+
+      // * 부모 및 조상 : Ancestors Traversing
+      // 1) 부모와 조상
+      console.log( $('#tving-link').parent() );
+      console.log( $('#tving-link').parents() );
+      console.log( $('#tving-link').closest('ul') );
+      // - 요소.parent(['선택자'])  : 요소의 바로 상위 요소 선택 (즉, 부모요소)
+      // - 요소.parents(['선택자']) : 요소의 상위요소들 전체 선택 (즉, 조상요소까지)
+      // - 요소.closest('선택자')   : 요소의 가장 가까운 상위 요소 선택
+
+
     })
   </script>
 
