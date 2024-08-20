@@ -59,6 +59,119 @@
     }
   </script>
 
+  <hr>
+
+  <h2>style 관련 속성</h2>
+
+  <ul class="ott" style="background-color: lightblue;">
+    <li id="netflix"><a href="#">넷플릭스</a></li>
+    <li id="disney"><a href="#">디즈니플러스</a></li>
+    <li id="tving"><a id="tving-link" href="#">티빙</a></li>
+    <li id="wave"><a href="#">웨이브</a></li>
+    <li id="coupang"><span>쿠팡플레이</span></li>
+  </ul>
+
+  <button onclick="fnStyleProp();">확인</button>
+
+  <script>
+    /*
+      * style 속성 관련 메소드
+        1) 요소.css('css속성')              : 해당 css속성값을 반환
+        2) 요소.css('css속성', 'css속성값') : 해당 요소에 전달된 css 반영
+        3) 요소.css({css속성: 'css속성값', 
+                     css속성: 'css속성값'}) : 해당 요소에 다수의 css 한꺼번에 반영가능
+    */
+
+
+    function fnStyleProp(){
+      // * css 값 가져오기
+      //   JavaScript 방식
+      console.log(document.querySelector('.ott').style.backgroundColor);
+      //   jQuery 방식
+      console.log($('.ott').css('backgroundColor'));
+
+      // * css 수정하기
+      //   JavaScript 방식
+      const aList = document.querySelectorAll('.ott a'); // [a, a, a, a]
+      for(let aEl of aList){
+        aEl.style.textDecoration = 'none';
+      }
+      //   jQuery 방식
+      $('.ott a').css('fontSize', '32px');  // camel case 가능
+      $('.ott a').css('font-size', '32px'); // 원래 css명으로도 가능
+      $('.ott a').css('fontWeight', '900').css('color', 'red');  // 메소드 체이닝 가능
+      $('#coupang > span').css({
+        backgroundColor: 'pink',
+        color: 'green',
+        fontSize: '32px'
+      });
+
+    }
+  </script>
+
+  <hr>
+
+  <h2>value 속성</h2>
+
+  아이디 : <input type="text" id="userId">
+  <button onclick="fnValueProp();">확인</button>
+
+  <script>
+    /*
+      * value 속성 관련 메소드
+        1) 요소.val()       : 해당 요소의 value 속성값 반환
+        2) 요소.val('문구') : 해당 요소의 value 속성값 변경
+    */
+
+    function fnValueProp(){
+      // * value 값 가져오기
+      //   JavaScript 방식
+      console.log(document.getElementById('userId').value);
+      //   jQuery 방식
+      console.log($('#userId').val());
+
+      // * value 값 수정하기
+      //   JavaScript 방식
+      document.getElementById('userId').value = 'javascript방식';
+      //   jQuery 방식
+      $('#userId').val('jQuery방식').css('color', 'red'); // 메소드 체이닝 가능
+    }
+  </script>
+
+  <hr>
+
+  <h2>className 속성</h2>
+
+  <style>
+    .blind {
+      display: none;
+    }
+  </style>
+
+  <div id="hello">hello world</div>
+  <button onclick="fnHide();">숨기기</button>
+  <button onclick="fnShow();">보이기</button>
+
+  <script>
+    /*
+      * className 속성 관련 메소드
+        1) 요소.addClass('클래스명')    : 해당 요소에 클래스 추가
+        2) 요소.removeClass('클래스명') : 해당 요소에 클래스 제거
+        3) 요소.toggleClass('클래스명') : 해당 요소에 클래스 반전
+    */
+
+    function fnHide() {
+      // #hello 요소에 blind 클래스 추가 
+      $('#hello').addClass('blind');
+    }
+
+    function fnShow() {
+      // #hello 요소에 blind 클래스 제거
+      $('#hello').removeClass('blind');
+    }
+  </script>
+
+
 
   
 </body>
