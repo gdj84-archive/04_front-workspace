@@ -187,7 +187,9 @@
         문제1. 
         .menu 요소 클릭시 현재 클릭된 요소의 text값이 alert로 띄워지도록
       */
-      
+      $('#jjigae .menu').on('click', function() {
+        alert($(this).text());
+      })
     })
   </script>
 
@@ -213,19 +215,85 @@
         checked 상태일 경우 가로,세로 길이를 30px로 변경, 그 뒤의 문구크기를 32px로 변경
         checked 상태가 아닐 경우 원상복구 시키기
       */
-
+      $('#hobby :checkbox').on('click', function(){
+        //if($(this).prop('checked'))
+        if($(this).is(':checked')){ // check상태일 경우
+          $(this).css({width: '30px', height: '30px'});
+          $(this).next().css('fontSize', '32px');
+        }else{ // check해제일 경우
+          $(this).css({width: '', height: ''});
+          $(this).next().css('fontSize', '');
+        }
+      })
 
       /*
         문제2.
         #hobby-btn 클릭시 현재 checked 상태의 checkbox 요소들의 value값을 alert로 출력하기
         만일 checked된 checkbox가 없을 경우 '선택된 취미가 없습니다.' 출력
       */
+      $('#hobby-btn').on('click', function() {
+        let result = '';
 
+        //console.log($('#hobby :checkbox:checked'));
+        let count = $('#hobby :checkbox:checked').length;
+
+        if(count == 0){
+          result = '선택된 취미가 없습니다.';
+        }else{
+          for(let i=0; i<count; i++){
+            result += $('#hobby :checkbox:checked').eq(i).val() + ' ';
+          }
+        }
+
+        alert(result);
+      })
 
     })
   </script>
 
+  <hr>
 
+  <h2>one 메소드</h2>
+
+  <button id="one-time">한번만 실행됨</button>
+
+  <script>
+    /*
+      * one 메소드
+        1. 한번만 동작하는 이벤트 작성가능
+        2. 사용법
+           이벤트대상.one('이벤트타입', function() {
+              실행내용;
+           })
+    */
+
+    $(document).ready(function() {
+      $('#one-time').one('click', function(){
+        alert('처음이자 마지막 이벤트 실행');
+      })
+    })
+  </script>
+
+  <hr>
+
+  <h2>trigger 메소드</h2>
+  <button id="trigger">#test1클릭</button>
+
+  <script>
+    /*
+      * trigger 메소드
+        1. 특정 요소의 이벤트를 강제로 실행
+        2. 사용법
+           이벤트대상.trigger('이벤트타입');
+           이벤트대상.이벤트메소드(); // trigger메소드 안써도 가능
+    */
+    $(document).ready(function(){
+      $('#trigger').on('click', function(){
+        //$('#test1').click();
+        $('#test1').trigger('click');
+      })
+    })
+  </script>
 
 
 
