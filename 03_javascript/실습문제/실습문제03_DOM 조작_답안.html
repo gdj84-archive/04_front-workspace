@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+#result {
+	width: 400px;
+	height: 150px;
+	background: #ffff99;
+	border: 1px solid #6666ff;
+}
+</style>
+</head>
+<body>
+
+	<h2>HTML 태그에 접근 테스트</h2>
+	
+	구매자 : <input type="text" id="user" placeholder="구매자의 이름을 입력하세요.">
+	<br><br>
+
+	상품명 : <input type="text" id="productName" placeholder="구매 상품명을 입력하세요">
+	<br><br>
+
+	가격 : <input type="text" id="productPrice" placeholder="구매 가격을 입력하세요.">
+	<br><br>
+
+	<button onclick="printValue();">입력값 출력하기</button>
+	<br><br>
+
+	<div id="result"></div>
+	
+	<script>
+		function printValue() {
+
+			/* ----------------------------------------------------------
+			const userName = document.getElementById("user").value;
+			const productName = document.getElementById("productName").value;
+			const productPrice = document.getElementById("productPrice").value;
+
+			const result = document.getElementById("result");
+
+			result.innerHTML = "";
+			result.innerHTML += "구입자 : " + userName + "님<br>";
+			result.innerHTML += "구입상품 : " + productName + "<br>";
+			result.innerHTML += "구매가격 : " + productPrice + "만원";
+			------------------------------------------------------------*/
+
+			// 위의 소스코드들을 쵸큼 줄인다면 -----------------
+			const result = document.getElementById("result");
+			result.innerHTML = "";
+			result.innerHTML += "구입자 : " + document.getElementById("user").value + "님<br>";
+			result.innerHTML += "구입상품 : " + document.getElementById("productName").value + "<br>";
+			result.innerHTML += "구매가격 : " + document.getElementById("productPrice").value + "만원";
+
+		}
+	</script>
+</body>
+</html>

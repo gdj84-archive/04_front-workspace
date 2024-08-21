@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>실습문제 1</title>
+    <style>
+        td{ /*어짜피 안먹힐꺼임*/
+            width:50px;
+            height:50px;
+        }
+    </style>
+</head>
+<body>
+
+    <button onclick="makeTable();">테이블 생성</button>
+	<script>
+    	function makeTable(){
+            const row = prompt("테이블 행의 갯수는? ");
+            const col = prompt("테이블 열의 갯수는? ");
+
+            let count = 1; // 각 셀마다 순차적으로 1씩 증가된 숫자를 넣기 위해 임의로 만든 변수 
+
+            // document.write로 출력할 문구(table요소) 작업 ---------------------
+            let table = '<table border="1">';
+            for(let i = 0; i<row; i++){ // 사용자가 입력한 행 수만큼의 <tr>요소를 만들기위한 for문
+                table += '<tr>';
+                for(let j=0; j<col; j++){ // 각 행 마다 사용자가 입력한 열 수만큼의 <td>요소를 만들기 위한 for문
+                    table += '<td width="50" height="50">' + count++ + '</td>';
+                }
+                table += '</tr>';
+            }
+            table += '</table>';
+            // ----------------------------------------------------------------
+
+            document.write(table); 
+
+            // document.write() 통해서 해당 테이블 출력하면
+            // 기존에 html 문서에 작성된거 싹 날라가고 출력되기 때문에
+            // 내가 아무리 style 태그로 미리스타일 작성해놨다고 해도
+            // document.write 함수 호출 되는 순간 싹 사라질거임 (head 태그 안 style태그도 싹 사라짐)
+            // 따라서 style태그로 작성해 놓은 css 적용 안됨 
+            // 해결방법 --> td요소 자체에 width, height 속성으로 작성하면 됨
+        
+    	}
+	</script>
+	
+	
+</body>
+</html>

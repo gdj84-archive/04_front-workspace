@@ -215,6 +215,20 @@
         두번째 열에는 상품가격
         세번째 열에는 해당 상품에 대한 정보를 볼 수 있는 버튼 두기
       */
+      $('#create-btn').on('click', function() {
+
+        let tableEl = '<table border="1">';
+        for(let product of productList){
+          tableEl += '<tr>'
+                    + '<td>' + product.name + '</td>'
+                    + '<td>' + product.price + '</td>'
+                    + '<td><button>확인</button></td>'
+                   + '</tr>';
+        }
+        tableEl += '</table>';
+
+        $('#result').html(tableEl);
+      })
 
       
       /*
@@ -222,6 +236,15 @@
         동적으로 만들어진 테이블 요소 내의 각 행별 마지막 셀에 있는 버튼 클릭시
         해당 행의 상품정보(상품명, 상품가격)를 alert로 띄워주기
       */
+      $('#result').on('click', 'button', function() {
+        //console.log('잘실행되나');
+        // $(this) : 현재 클릭된 확인 버튼 
+        // $(this).parent().prev().prev() : 현재 클릭된 확인 버튼 행의 첫번째 셀
+        // $(this).parent().prev() : 현재 클릭된 확인 버튼 행의 두번째 셀
+      
+        alert('상품명: ' + $(this).parent().prev().prev().text()
+           + ', 상품가격: ' + $(this).parent().prev().text());
+      })
 
     })
   </script>
