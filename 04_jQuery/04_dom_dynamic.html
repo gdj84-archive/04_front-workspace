@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+</head>
+<body>
+
+  <h2>요소생성</h2>
+
+  <script>
+    /*
+      * 동적으로 요소 생성
+        1) 문자열로 요소 만들기 
+           ㄴ 변수 = '<b>안녕하세요</b>';
+        2) jQuery 객체로 요소 만들기
+           ㄴ 변수 = $('<b></b>').text('안녕하세요');
+           ㄴ 변수 = $('<b>안녕하세요</b>');
+      
+      * 동적으로 만들어진 요소 추가
+        1) 문자열로 만들어진 요소 추가
+           ㄴ 요소.html('문자열로생성한요소');
+        2) jQuery 객체로 만들어진 요소 추가 
+           ㄴ jQuery객체.appendTo(요소)     : 요소의 마지막 자손으로 추가
+           ㄴ jQuery객체.prependTo(요소)    : 요소의 첫번째 자손으로 추가
+           ㄴ jQuery객체.insertBefore(요소) : 요소의 이전 형제로 추가
+           ㄴ jQuery객체.insertAfter(요소)  : 요소의 다음 형제로 추가
+           ---------------------------------------------------------------
+           ㄴ 요소.append(jQuery객체)  : 요소의 마지막 자손으로 추가
+           ㄴ 요소.prepend(jQuery객체) : 요소의 첫번째 자손으로 추가
+           ㄴ 요소.before(jQuery객체)  : 요소의 이전 형제로 추가
+           ㄴ 요소.after(jQuery객체)   : 요소의 다음 형제로 추가
+    */
+
+    $(document).ready(function(){
+
+      // '<span class="added">B</span>'
+      /*
+      $('<span class="added">B</span>').appendTo('#test1');
+      $('<span class="added">B</span>').prependTo('#test2');
+      $('<span class="added">B</span>').insertBefore('#test3');
+      $('<span class="added">B</span>').insertAfter('#test4');
+      */
+
+      $('#test1').append($('<span class="added">B</span>'));
+      $('#test2').prepend($('<span class="added">B</span>'));
+      $('#test3').before($('<span class="added">B</span>'));
+      $('#test4').after('<span class="added">B</span>');
+
+    })
+  </script>
+
+  <style>
+    .added{color: palegreen}
+  </style>
+
+  <h1 id="test1">
+    <span>A</span>
+  </h1>
+
+  <h1 id="test2">
+    <span>A</span>
+  </h1>
+
+  <h1 id="test3">
+    <span>A</span>
+  </h1>
+
+  <h1 id="test4">
+    <span>A</span>
+  </h1>
+
+  <hr>
+
+  <style>
+    .item{
+      background: yellowgreen;
+      width: 100px;
+      height: 100px;
+      text-align:center;
+      line-height:100px;
+      margin:10px;
+      font-size: 25px;
+      color: white;
+      font-weight: 900;
+    }
+  </style>
+
+  <h2>요소 복제</h2>
+
+  <div id="clone-test">
+    <!-- 복제할 요소 -->
+    <div id="item1" class="item">
+      <span>안녕</span>
+    </div>
+  </div>
+
+  <button id="clone-btn">복제</button>
+
+  <!-- 복제한 요소 붙여넣기 할 영역 -->
+  <div id="clone-result"></div>
+
+  <script>
+    /*
+      * 요소 객체 복제 메소드
+        요소.clone([true|false]) : 해당 요소를 복제해서 반환 
+          ㄴ true  옵션 : 복제할 요소의 이벤트도 같이 복사
+          ㄴ false 옵션 : 복제할 요소의 이벤트는 복사 x, 생략시 기본값
+    */
+
+    $(function() {
+
+      // 복제할 요소에 이벤트 걸기
+      $('.item').hover(function(){
+        $(this).css('backgroundColor', 'purple');
+      }, function(){
+        $(this).css('backgroundColor', 'yellowgreen');
+      })
+
+      $('#clone-btn').on('click', function() {
+        // #item1인 요소를 복제해서 #clone-result 자손으로 추가
+        //$('#clone-result').append($('#item1')); // 이동되버림
+
+        //$('#clone-result').append($('#item1').clone());  // false로 제시된 셈 (이벤트 복사x)
+        $('#clone-result').append($('#item1').clone(true)); 
+      
+      })
+
+    })
+  </script>
+
+  <hr>
+
+  <h2>요소 제거 및 잘라내기</h2>
+
+  <div id="remove-test">
+    <!-- 제거할 요소 -->
+    <div id="item2" class="item">
+      <span>안녕</span>
+    </div>
+  </div>
+
+  <button id="empty-btn">제거</button>
+  <button id="remove-btn">잘라내기1</button>
+  <button id="detach-btn">잘라내기2</button>
+
+  <!-- 잘라낸 요소 붙여넣기 할 영역 -->
+  <div id="remove-result"></div>
+
+  <script>
+    /*
+      * 하위 요소 제거 메소드
+        요소.empty() : 해당 요소의 하위 요소들 제거
+
+      * 선택 요소 제거 및 잘라내기 메소드
+        요소.remove() : 해당 요소 제거 후 반환 (이벤트는 같이 반환 안됨)
+        요소.detach() : 해당 요소 제거 후 반환 (이벤트도 같이 반환)
+    */
+  </script>
+
+
+
+  
+</body>
+</html>
