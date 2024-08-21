@@ -98,6 +98,134 @@
     <h5>정적요소 (페이지 로드시 존재하는 요소)</h5>
   </div>
 
+  <script>
+    /*
+      * on 메소드
+        1. 하나의 이벤트 타입에 여러개의 이벤트 핸들러 등록 가능 (표준 이벤트 모델의 특징)
+        2. 사용법
+           1) 정적요소 (페이지 로드시 존재하는 요소)
+              이벤트대상.on('이벤트타입', function(evt) {
+                실행내용;
+              })
+           2) 동적요소 (페이지 로드시에는 없다가 이벤트에 의해 동적으로 만들어지는 요소)
+              이벤트대상의상위요소.on('이벤트타입', '이벤트대상', function(evt) {
+                실행내용;
+              })
+
+      * off 메소드
+        1. 등록된 이벤트를 제거하는 메소드
+        2. 사용법
+           이벤트대상.off('이벤트타입');
+    */
+    $(document).ready(function() {
+
+      /*
+      $('#test1').on('mouseenter', function() {
+        $(this).css('backgroundColor', 'yellowgreen').text('마우스 올라감');
+      })
+      $('#test1').on('mouseout', function() {
+        $(this).css('backgroundColor', 'yellow').text('마우스 빠져나감');
+      })
+      */
+
+      // 객체로 전달 가능
+      $('#test1').on({
+        mouseenter: function() {
+          $(this).css('backgroundColor', 'yellowgreen').text('마우스 올라감');
+        },
+        mouseout: function() {
+          $(this).css('backgroundColor', 'yellow').text('마우스 빠져나감');
+        }
+      });
+
+      $('#test1').on('click', function() {
+        $(this).css('backgroundColor', 'red')
+               .text('hover 기능 제거됨')
+               .off('mouseenter')
+               .off('mouseout');
+        
+        // 동적으로 <h5>요소 생성해서 #wrap 자손으로 추가
+        $('#wrap').append($('<h5>동적요소 (페이지 로드시 없던 요소)</h5>'));
+
+      })
+
+      /*
+      // 동적으로 만들어진 요소에는 반영 안됨
+      $('#wrap h5').on('click', function() {
+        alert('h5요소 클릭됨');
+      })
+      */
+
+      // 동적으로 만들어진 요소에도 이벤트를 부여하고자 할 경우
+      // 아래와 같은 방법으로 해야됨 *************************
+      /*
+      $('#wrap').on('click', 'h5', function() {
+        alert('h5요소 클릭됨');
+      })
+      */
+      $(document).on('click', '#wrap h5', function() {
+        alert('h5요소 클릭됨');
+      })
+      // $(document) 로도 가능
+
+    })
+  </script>
+
+  <hr>
+
+  <h2>연습1</h2>
+
+  <ul id='jjigae'>
+    <li class="menu">김치찌개</li>
+    <li class="menu">된장찌개</li>
+    <li class="menu">순두부찌개</li>
+  </ul>
+
+  <script>
+    $(document).ready(function(){
+      /*
+        문제1. 
+        .menu 요소 클릭시 현재 클릭된 요소의 text값이 alert로 띄워지도록
+      */
+      
+    })
+  </script>
+
+  <h2>연습2</h2>
+
+  <div id="hobby">
+    <input type="checkbox" name="hobby" value="reading" id="reading">
+    <label for="reading">독서</label>
+    <input type="checkbox" name="hobby" value="sports" id="sports">
+    <label for="sports">스포츠</label>
+    <input type="checkbox" name="hobby" value="movie" id="movie">
+    <label for="movie">영화</label>
+
+    <button id="hobby-btn">클릭</button>
+  </div>
+
+  <script>
+    $(document).ready(function(){
+      /*
+        문제1. 
+        #hobby 내의 checkbox 요소 클릭시
+        현재 클릭된 checkbox 요소가 
+        checked 상태일 경우 가로,세로 길이를 30px로 변경, 그 뒤의 문구크기를 32px로 변경
+        checked 상태가 아닐 경우 원상복구 시키기
+      */
+
+
+      /*
+        문제2.
+        #hobby-btn 클릭시 현재 checked 상태의 checkbox 요소들의 value값을 alert로 출력하기
+      */
+
+      
+    })
+  </script>
+
+
+
 
 
   
