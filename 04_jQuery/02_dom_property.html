@@ -357,6 +357,13 @@
       console.log($('#user').data('name'));
       console.log($('#user').data('homeAddress'), $('#user').data('home-address'))
       console.log($('#user').data('zipcode'), $('#user').data('zipCode')); // zipCode 안됨
+      // * data속성 추가 및 수정하기
+      $('#user').data('homeAddress', 'Busan');
+      $('#user').data('mobile', '010-1111-2222');
+
+      console.log($('#user').data('homeAddress'));
+      console.log($('#user').data('mobile'));
+
     })
   </script>
 

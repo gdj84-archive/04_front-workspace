@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+
+  <style>
+    .yellow{background: yellow}
+  </style>
+
+  <h2>이벤트 메소드</h2>
+
+  <h3>클릭해보세요1</h3>
+  <h3>클릭해보세요2</h3>
+
+  <script>
+    /*
+      * 이벤트 메소드
+        1. jQuery용 객체에 이벤트 핸들러를 부여하는 메소드
+        2. 주로 이벤트명이 곧 메소드 명으로 되어있음 
+        3. 사용법
+           이벤트대상.이벤트메소드(이벤트핸들러);
+
+           1) 익명함수
+              이벤트대상.click(function(evt) {
+                실행내용;
+              })
+
+           2) 화살표함수
+              이벤트대상.click(evt => {
+                실행내용;
+              })
+
+    */
+    $(document).ready(function(){
+
+      // JavaScript 방식
+      /*
+      const h3List = document.getElementsByTagName('h3'); // [h3, h3]
+      for(let h3El of h3List){
+        h3El.onclick = function() {
+          console.log('클릭됨');
+        }
+      }
+      */
+
+      // jQuery 방식
+      $('h3').click(function(evt) {
+        console.log(window.event.target);
+        console.log(evt.target);
+        console.log(this);
+        console.log('-------------------')
+      })
+
+      $('h3').click((evt) => {
+        console.log(window.event.target);
+        console.log(evt.target);
+        // console.log(this); 
+        console.log('-------------------')
+      })
+
+      $('h3').dblclick(function(evt) {
+        // 현재 이벤트가 발생된 해당 요소의
+        // 문구 변경 및 스타일 변경
+        $(evt.target).html('더블클릭됨');
+        $(this).css('backgroundColor', 'red');
+        // evt.target 또는 this 자바스크립트 방식의 객체
+      })
+
+      /*
+      $('h3').mouseenter(function() {
+        $(this).addClass('yellow');
+      })
+      $('h3').mouseout(function(){
+        $(this).removeClass('yellow');
+      })
+      */
+
+      // hover 이벤트메소드로 mouseenter + mouseout 같이 부여 가능
+      $('h3').hover(function(){
+        $(this).addClass('yellow');
+      }, function(){
+        $(this).removeClass('yellow');
+      })  
+
+    })
+  </script>
+
+  <h2>on 메소드</h2>
+
+  <h4 id="test1">마우스 클릭 및 올려보세요</h4>
+
+  <div id="wrap">
+    <h5>정적요소 (페이지 로드시 존재하는 요소)</h5>
+  </div>
+
+
+
+  
+</body>
+</html>
