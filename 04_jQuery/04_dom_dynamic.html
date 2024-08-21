@@ -159,10 +159,82 @@
         요소.remove() : 해당 요소 제거 후 반환 (이벤트는 같이 반환 안됨)
         요소.detach() : 해당 요소 제거 후 반환 (이벤트도 같이 반환)
     */
+    $(document).ready(function(){
+
+      $('#empty-btn').on('click', function(){
+        //$('#item2').empty();
+        $('#remove-test').empty();
+      })
+
+      $('#remove-btn').on('click', function() {
+        const removeEl = $('#item2').remove(); // 요소만 반환
+        $('#remove-result').append(removeEl);
+      })
+
+      $('#detach-btn').on('click', function(){
+        const detachEl = $('#item2').detach();
+        $('#remove-result').append(detachEl);
+      })
+
+    })
+  </script>
+
+  <hr>
+
+  <h2>연습</h2>
+
+  <button id="create-btn">요소생성</button>
+  <br><br>
+
+  <div id="result"></div>
+
+  <script>
+    $(document).ready(function() {
+
+      const productList = [
+        {
+          name: '마우스',
+          price: 10000
+        }, 
+        {
+          name: '키보드',
+          price: 20000
+        }, 
+        {
+          name: '마이크',
+          price: 30000
+        }
+      ];
+
+      /*
+        문제1. 
+        #create-btn 버튼 클릭시 위의 객체배열의 값으로
+        table 요소 생성해서 #result에 출력하기
+        이때 3행 3열짜리 테이블이 만들어져야되며
+        첫번째 열에는 상품명
+        두번째 열에는 상품가격
+        세번째 열에는 해당 상품에 대한 정보를 볼 수 있는 버튼 두기
+      */
+
+      
+      /*
+        문제2.
+        동적으로 만들어진 테이블 요소 내의 각 행별 마지막 셀에 있는 버튼 클릭시
+        해당 행의 상품정보(상품명, 상품가격)를 alert로 띄워주기
+      */
+
+    })
   </script>
 
 
 
+
+
+
+
+
+
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
   
 </body>
 </html>
