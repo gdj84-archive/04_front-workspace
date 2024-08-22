@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
 	<h1>객체 실습 문제</h1>
@@ -61,15 +62,22 @@
 			}
 			console.log(objectArr);
 
+			/*
 			let nameTd = document.getElementsByClassName("name");
 			let ageTd = document.getElementsByClassName("age");
 			let addrTd = document.getElementsByClassName("addr");
+			*/
 
 			for(let i=0; i<3; i++){
 				with(objectArr[i]){
-					nameTd[i].innerHTML = /*objectArr[i].*/name;
-					ageTd[i].innerHTML = /*objectArr[i].*/age;
-					addrTd[i].innerHTML = /*objectArr[i].*/addr;
+					/*
+					nameTd[i].innerHTML = name;
+					ageTd[i].innerHTML = age;
+					addrTd[i].innerHTML = addr;
+					*/
+					$('.name').eq(i).html(name);
+					$(".age").eq(i).html(age);
+					$(".addr").eq(i).html(addr);
 				}
 			}
 		}

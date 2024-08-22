@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>자바스크립트 실습문제</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <style>
     *{box-sizing: border-box;}
 
@@ -40,12 +41,13 @@
   <div id="test1"></div>
   <script>
     function test1(){
-      let inputData = prompt("메세지를 입력하세요"); // 아무것도 입력하지 않고 확인지 빈문자열, 취소버튼클릭시 null
-      //if(inputData == "" || inputData == null){
+      let inputData = prompt("메세지를 입력하세요"); 
+      
       if(!inputData){  
         inputData = "메세지가 입력되지 않았습니다.";
       }           
-      document.getElementById("test1").innerHTML = inputData;
+      //document.getElementById("test1").innerHTML = inputData;
+      $("#test1").html(inputData);
     }
   </script>
 
@@ -60,19 +62,12 @@
   <div id="test2"></div>
   <script>
     function test2(){
-      /*
-      let msg = "";
-      if(confirm("개인정보활용에 동의하시겠습니까?")){
-        msg = "당신의 개인정보가 유출되었습니다";
-      }else{
-        msg = "당신의 개인정보 유출을 막았습니다";
-      }
-      */
-
-      // 삼항연산자 이용하기 
+      
       let msg = confirm("개인정보활용에 동의하시겠습니까?") ? "당신의 개인정보가 유출되었습니다" : "당신의 개인정보 유출을 막았습니다";
       
-      document.getElementById("test2").innerHTML = msg;
+      //document.getElementById("test2").innerHTML = msg;
+      $("#test2").html(msg);
+      
     }
   </script>
 
@@ -88,7 +83,9 @@
   </div>
   <script>
     function test3(){
-      document.querySelector("div#test3 > ul").innerHTML = "";
+
+      //document.querySelector("div#test3 > ul").innerHTML = "";
+      $('div#test3 > ul').html('');
 
       let numbers = [];
       for(let i=0; i<10; i++){
@@ -99,18 +96,9 @@
           return right-left;
       });
 
-      /*
-      for(let item of numbers){
-        document.querySelector("div#test3>ul").innerHTML += "<li>" + item + "</li>";
-      }
-      */
-      
-      // for of문 대신에 forEach 함수같은걸 쓸 수도 있음! 
-      // 배열.forEach(callback)
-      // 배열내의 요소들에 순차적으로 접근하면서 매번 callback 함수가 실행됨
-      // 이때 해당 함수 실행시마다 매개변수로 접근된 요소가 전달됨
-      numbers.forEach(function(item){ // 매개변수를 써두면 매번 각인덱스에 담겨있는 value값이 순차적으로 전달되어 대입됨! 
-          document.querySelector("div#test3 > ul").innerHTML += "<li>" + item + "</li>";
+      numbers.forEach(function(item){ 
+          //document.querySelector("div#test3 > ul").innerHTML += "<li>" + item + "</li>";
+          $('div#test3 > ul').html($('div#test3 > ul').html() + '<li>' + item + '</li>');
       })
 
     }
@@ -127,22 +115,20 @@
   <div class="img-container"></div>
   <script>
     function test4(){
-        /* ---- 동적인 요소를 문자열로 만드는 방법 -----
-        const srcValue = document.getElementsByName("img")[0].value;
-        document.getElementsByClassName("img-container")[0].innerHTML = "<img src='" + srcValue + "' width='200' height='200'>";
-        */
-
-        // ----- 동적인 요소를 dom요소객체로 만드는 방법 -----
-        // document.createElement(태그) : 해당 태그의 dom객체 생성됨 
-        // 단 이방법으로 생성된 요소객체를 특정 요소에 출력하고자 한다면
-        // innerHTML으로 출력해서는 안되고
-        // 결과영역요소객체.appendChild(출력할요소객체); 를 이용해서 출력해야됨
+        /*
         const imgEl = document.createElement("img");
         imgEl.src = document.getElementsByName("img")[0].value;
         imgEl.width = "200";
         imgEl.height = "200";
+        */
+        const imgEl = $('<img>').attr({
+          src: $('input[name=img]').val(),
+          width: '200',
+          height: '200'
+        });
 
-        document.getElementsByClassName("img-container")[0].appendChild(imgEl);
+        //document.getElementsByClassName("img-container")[0].appendChild(imgEl);
+        $('.img-container').eq(0).append(imgEl);
     }
   </script>
 
@@ -165,23 +151,21 @@
   <div id="checkStr"></div>
   <script>
     function test5(){
+      /*
       const data = document.querySelectorAll(".data-container > *");  
       const containerDiv = document.getElementById("checkStr");
       for(let i=0; i<data.length; i++){
         if(data[i].innerHTML.length >= 3){
-          //containerDiv.innerHTML += data[i].innerHTML + " "; // 단순히 3글자 이상인 문자열만 출력하기
-          
-          //containerDiv.appendChild(data[i]); // 요소객체 자체를 div에 출력하기 => 단, 기존요소객체가 "이동"되버림
-
-          // 기존 요소 객체를 그대로 유지하면서 div#checkStr에 출력하고자 할 경우 
-          // 기존 요소 객체를 복제한 후에 출력하면됨
-          // 요소복제 메소드 -   복제할요소객체.cloneNode(논리값) : 복제된요소객체
-          //                     이때 논리값으로 false 제시시 elementNode(태그)만 복제
-          //                                     true  제시시 elementNode와 textNode(content영역)모두 복제
           let copy = data[i].cloneNode(true);
           containerDiv.appendChild(copy);
         }
       }
+      */
+      $(".data-container > *").each(function(){
+        if($(this).html().length >= 3){
+          $("#checkStr").append($(this).clone());
+        }
+      })
     }
   </script>
 

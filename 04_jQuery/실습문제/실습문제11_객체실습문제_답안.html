@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <style>
     #print{
         height: 100px;
@@ -60,8 +61,9 @@
       
     function printMember(){
       if(member){
-        document.getElementById("print").innerHTML = member;
-        member = null; // 한번 출력 했으니 다시 member객체 null로 초기화 (다시 입력부터 받게)
+        //document.getElementById("print").innerHTML = member;
+        $('#print').html(member.toString()); // jQuery 에서는 toString()을 직접 호출해야됨
+        member = null; 
       }else{
         alert("입력을 먼저 진행해주세요");
       }

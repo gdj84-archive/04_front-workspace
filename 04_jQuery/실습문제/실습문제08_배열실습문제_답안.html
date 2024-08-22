@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
 	<h1>배열 실습 문제3</h1>
@@ -17,23 +18,30 @@
 		<button onclick="input()">입력</button>
 	</fieldset>
 	<br>
-    <p style="border:1px solid red;" id="result">이 부분에 정답이 출력 될 수 있도록 하세요</p>
-	<div id="result1"></div>
+	<p style="border:1px solid red;" id="result">이 부분에 정답이 출력 될 수 있도록 하세요</p>
+
 	<button onclick="print();">출력</button>
 
 	<script>
 
-		const data = new Array(); // 전역변수로 빈 배열 선언해두고
+		const data = new Array(); 
     	
 		function input(){
+			/*
 			const strInput = document.getElementById("strInput");
 			data.push(strInput.value);
 			strInput.value="";
+			*/
+			data.push($("#strInput").val());
+			$("#strInput").val("");
 		}   
 		
 		function print(){
+			/*
 			const print2 = document.getElementById("result");
 			print2.innerHTML = data.join();
+			*/
+			$("#result").html(data.join());
 		}
 	</script>   
 	

@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <style type="text/css">
 	fieldset {  		
 		width: 400px;		
@@ -18,7 +19,6 @@
 		background: #ffcc00;
 		display: none;
 	}
-
   </style>
 </head>
 <body>
@@ -56,10 +56,14 @@
 		</form>
 	</div>
 
+	<style>
+		.block{display:block;}
+	</style>
 	<script>
 		
 		function showDiv(el){
 			
+			/*
 			let tag = document.getElementsByClassName("box");
 			
 			for(let i=0 ; i<tag.length ; i++){
@@ -69,6 +73,14 @@
 					tag[i].style.display = "none";
 				}
 			}
+			*/
+			$(".box").each(function(i, divEl){
+				if(el.id + "Box" == divEl.id)
+					$(this).addClass("block");
+				else
+					$(this).removeClass("block");
+			})
+
 
 		}
   	</script>
