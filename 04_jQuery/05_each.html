@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+  <h2>each메소드</h2>
+
+  <script>
+    /*
+      * each 메소드
+        1. 배열의 요소들 또는 객체의 속성들을 순회할때 사용할 수 있는 메소드
+        2. for in문과 유사하게 수행됨
+        3. 사용법
+           1) $.each(배열|객체, function(매개변수1, 매개변수2) {
+                순회하면서 수행할 내용
+              })
+
+           2) $(배열).each(function(매개변수1, 매개변수2) {
+                순회하면서 수행할 내용  
+              })
+
+           순회하면서 매번 function이 실행됨 (콜백함수)
+           배열제시시 첫번째 인자값으로 인덱스수, 두번째 인자값으로 요소가 전달됨
+           객체제시시 첫번째 인자값으로 속성명,   두번째 인자값으로 속성값이 전달됨
+    */
+    $(document).ready(function() {
+      const arr = ['강', '남', '하', '동'];
+
+      // 1) for in문 이용
+      for(let index in arr) {
+        console.log('인덱스: ' + index + ", 값: " + arr[index]);
+      }
+      console.log('-------------------');
+      
+      // 2) each메소드 이용1
+      $.each(arr, function(index, value) {
+        console.log('인덱스: ' + index + ", 값: " + value);
+      })
+      console.log('-------------------');
+      
+      // 3) each메소드 이용2
+      $(arr).each(function(index, value) {
+        console.log('인덱스: ' + index + ", 값: " + value);
+      })
+      console.log('-------------------');
+      
+      
+      const student = {
+        name: '홍길동',
+        age: 20,
+        addr: '서울'
+      };
+      
+      // 1) for in문 이용
+      for(let prop in student) { // 'name', 'age', 'addr'
+        console.log('속성명: ' + prop + ', 속성값: ' + student[prop]);
+      }
+      console.log('-------------------');
+
+      // 2) each 메소드 이용
+      $.each(student, function(prop, value) {
+        console.log('속성명: ' + prop + ', 속성값: ' + value);
+      })
+
+    })
+  </script>
+
+  <button id="btn1">학생조회</button>
+  <br><br>
+
+  <table id="student-list" border="1">
+    <thead>
+      <tr>
+        <th>순번</th>
+        <th>이름</th>
+        <th>나이</th>
+        <th>주소</th>
+        <th>정보확인</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+  </table>
+
+  <style>
+    .bg {background-color: lightgray;}
+  </style>
+
+  <script>
+    $(document).ready(function(){
+
+      $('#btn1').on('click', function() {
+
+        // AJAX 이용해서 db로부터 데이터 조회가능
+        // db로 다음과 같이 조회되었다는 가정하에
+        const students = [{name: '홍길동', age: 20, addr: '서울'},
+                          {name: '김말똥', age: 30, addr: '부산'},
+                          {name: '강개순', age: 25, addr: '광주'}];
+
+        let result = '';
+        $.each(students, function(index, stu) {
+          result += '<tr>'
+                    + '<td>' + (index + 1) + '</td>'
+                    + '<td class="name">' + stu.name + '</td>'
+                    + '<td class="age">' + stu.age  + '</td>'
+                    + '<td class="addr">' + stu.addr + '</td>'
+                    + '<th><button>확인</button></th>'
+                  + '</tr>';
+        })
+
+        $('#student-list tbody').html(result);
+
+      })
+
+      /*
+        문제1.
+        학생 정보가 보여지는 행(tr) 클릭시 
+        해당 행의 배경색을 lightgray 색상으로 적용
+      */
+      $('#student-list tbody').on('click', 'tr', function() {
+        //$(this).css('backgroundColor', 'lightgray');
+
+        // * 요소.hasClass('클래스') : 해당 요소가 해당 클래스를 가지고 있을경우 true / 아니면 false
+        if($(this).hasClass('bg')){ 
+          $(this).removeClass('bg');
+        }else{
+          $(this).addClass('bg');
+        }
+
+      })
+
+      /*
+        문제2.
+        각 행별 확인(button) 버튼 클릭시
+        alert로 해당 행의 학생의 정보 출력하시오.
+        단, 문제1에 의해서 해당 행의 배경색이 변경이되서는 안됨
+      */
+      $('#student-list tbody').on('click', 'button', function(evt) {
+        
+        const $trEl = $(this).parents('tr'); // 버튼이 존재하는 해당 행(tr요소)
+        
+        alert('이름: ' + $trEl.find('.name').text() + '\n'
+            + '나이: ' + $trEl.find('.age').text()  + '\n'
+            + '주소: ' + $trEl.find('.addr').text());
+
+        // 전파방지
+        evt.stopPropagation();
+      })
+
+      /*
+        이벤트    이벤트
+         상위      하위
+          tr      button
+
+        기본적으로 하위요소 클릭시 상위요소 이벤트까지 실행되는 
+        이벤트 버블링(전파) 발생
+        전파 방지하고자 할 경우 
+        하위요소 이벤트객체.stopPropagation() 실행
+      */
+
+    })
+  </script>
+
+  <hr>
+
+  <button id="btn2">클릭</button>
+
+  <div id="item-list">
+    <h3>item-1</h3>
+    <h3>item-2</h3>
+    <h3>item-3</h3>
+    <h3>item-4</h3>
+    <h3>item-5</h3>
+  </div>
+
+  <style>
+    .bg-0{background:red}
+    .bg-1{background:orange}
+    .bg-2{background:yellow}
+    .bg-3{background:green}
+    .bg-4{background:blue}
+  </style>
+
+  <script>
+    $(document).ready(function(){
+
+      $('#btn2').on('click', function() {
+
+        // h3요소들에 순차적으로 접근하면서 bg-* 클래스 부여
+        $('#item-list h3').each(function(index, h3El) {
+          // 현재 순차적으로 접근되는 h3요소(h3El)에 class 추가
+          h3El.addClass('bg-' + index);
+        })
+
+      })
+
+    })
+  </script>
+
+
+</body>
+</html>
