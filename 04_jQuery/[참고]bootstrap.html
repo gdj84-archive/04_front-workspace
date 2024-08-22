@@ -307,9 +307,77 @@
     <div class="row m-3">
       <div class="col">
 
+        <div class="form-group">
+          <label for="sel1">Select list:</label>
+          <select class="form-control" id="sel1">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="usr">Name:</label>
+          <input type="text" class="form-control form-control-sm" id="usr">
+        </div>
+        <div class="form-group">
+          <label for="pwd">Password:</label>
+          <input type="password" class="form-control form-control-sm" id="pwd">
+        </div>
+        <div class="form-group">
+          <label for="comment">Comment:</label>
+          <textarea class="form-control form-control-sm" rows="5" id="comment"></textarea>
+        </div>
+        <div class="form-check-inline">
+          <label class="form-check-label">
+            <input type="checkbox" class="form-check-input" value="">Option 1
+          </label>
+        </div>
+        <div class="form-check-inline">
+          <label class="form-check-label">
+            <input type="checkbox" class="form-check-input" value="">Option 2
+          </label>
+        </div>
+        <div class="form-check-inline">
+          <label class="form-check-label">
+            <input type="checkbox" class="form-check-input" value="" disabled>Option 3
+          </label>
+        </div>
+
       </div>
       <div class="col">
-        
+        <form action="/action_page.php">
+          <div class="form-group">
+            <label for="email">Email address:</label>
+            <input type="email" class="form-control" placeholder="Enter email" id="email">
+          </div>
+          <div class="form-group">
+            <label for="pwd">Password:</label>
+            <input type="password" class="form-control" placeholder="Enter password" id="pwd">
+          </div>
+          <div class="form-group form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="checkbox"> Remember me
+            </label>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="container border mt-3 p-3">
+    <h1>modal</h1>
+    <p>This is some text.</p>
+
+    <div class="row m-3">
+      <div class="col">
+        <!-- Button to Open the Modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#boramModal">
+          Open modal
+        </button>
       </div>
     </div>
   </div>
@@ -320,6 +388,40 @@
 
 
 
+
+
+  <!-- The Modal -->
+  <div class="modal" id="boramModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">나만의 모달</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <table class="table table-hover">
+            <thead></thead>
+            <tbody>
+              <tr>
+                <td>안녕</td>
+                <td>잘가</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
 
 
   <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
