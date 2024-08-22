@@ -96,7 +96,72 @@
            ㄴ slideDown   : 높이가 늘어나면서 display 기존 상태로 
            ㄴ slideToggle : slideUp() <=> slideDown()
     */
+    $(document).ready(function(){
+
+      $('#qna .q').on('click', function() {
+
+        // 1. slideToggle 이용
+        $(this).next().slideToggle();
+        $(this).next().siblings('.a').slideUp();
+        
+
+        /*
+        // 2. 직접 slideUp, slideDown 이용
+        const $aEl = $(this).next();
+        if($aEl.css('display') == 'none'){
+          $aEl.siblings('.a').slideUp();
+          $aEl.slideDown();
+        }else{
+          $aEl.slideUp();
+        }
+        */
+
+      })
+
+    })
   </script>
+
+  <h2>slideUp, slideDown, slideToggle 메소드</h2>
+
+  <div id="qna">
+    <div class="q">Q. 반품 언제되나요?</div>
+    <div class="a">A. 지금 확인중입니다.</div>
+
+    <div class="q">Q. 상품 위치를 알고싶습니다.</div>
+    <div class="a">A. 배송 조회 해보세요.</div>
+
+    <div class="q">Q. 이 사이즈 있나요?</div>
+    <div class="a">A. 네 있어요 ^^</div>
+
+    <div class="q">Q. 판매자가 연락이 안됩니다.</div>
+    <div class="a">A. 신고하세요.</div>
+
+    <div class="q">Q. 연락 가능한 시간을 알려주세요.</div>
+    <div class="a">A. 플러스 친구 카카오톡 이용하세요.</div>
+  </div>
+
+  <style>
+    #qna div{box-sizing: border-box;}
+    #qna .q {
+      border: 1px solid yellow;
+      width: 300px;
+      background: beige;
+      height: 30px;
+      line-height: 30px;
+      border-radius: 10px;
+      text-align: center;
+      cursor: pointer;
+    }
+    #qna .a {
+      border: 1px solid lightgray;
+      width: 300px;
+      height: 100px;
+      border-radius: 10px;
+      margin: 5px 0px;
+      padding: 10px;
+      display: none;
+    }
+  </style>
 
 
   
