@@ -192,9 +192,52 @@
       $('#btn2').on('click', function() {
 
         // h3요소들에 순차적으로 접근하면서 bg-* 클래스 부여
-        $('#item-list h3').each(function(index, h3El) {
+        $('#item-list h3').each(function(index/*, h3El*/) {
           // 현재 순차적으로 접근되는 h3요소(h3El)에 class 추가
-          h3El.addClass('bg-' + index);
+          //h3El.addClass('bg-' + index); // h3El에는 javascript방식의 객체라서 안됨
+
+          //h3El.className = 'bg-' + index; // 방법1. javascript방식으로 처리
+          //$(h3El).addClass('bg-' + index);// 방법2. jQuery객체로 변환해서 jQuery 메소드 사용
+
+          // 매개변수 활용 없이 this로 순차적으로 접근되는 요소 사용 가능
+          // each메소드의 콜백함수에서의 this : 순차적으로 접근되는 요소 (javascript객체)
+          //                                    화살표함수에서는 사용x
+          //this.className = 'bg-' + index; // 방법3
+          $(this).addClass('bg-' + index);  // 방법4
+        })
+
+      })
+
+    })
+  </script>
+
+  <hr>
+
+  <button id="btn3">클릭</button>
+
+  <div id="test-list">
+    <h3 class="test">test1</h3>
+    <h3>test2</h3>
+    <h3 class="test">test3</h3>
+    <h3 class="test">test4</h3>
+    <h3>test5</h3>
+    <h3 class="test">test6</h3>
+  </div>
+
+  <script>
+    $(document).ready(function(){
+
+      $('#btn3').on('click', function() {
+        // h3요소들 중 
+        // 클래스로 test를 가지고 있을 경우 배경색 orange
+        //                        아닐 경우 배경색 yellow
+        $('#test-list h3').each(function() {
+          //if($(this).hasClass('test')){
+          if($(this).is('.test')){
+            $(this).css('backgroundColor', 'orange');
+          }else{
+            $(this).css('backgroundColor', 'yellow');
+          }
         })
 
       })

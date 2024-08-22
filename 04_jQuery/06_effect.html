@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+
+  <script>
+    /*
+      * show, hide, toggle 메소드 
+        1. 요소의 크기(width, height)가 조정되면서 보여지고 사라지는 효과의 메소드
+        2. 사용법
+           요소.show|hide|toggle(['ms']);
+           ㄴ show  : 가로 세로 크기가 점점 커지면서 display를 기존 상태로 처리
+           ㄴ hide  : 가로 세로 크기가 점점 작아지면서 diplay를 최종 none 처리
+           ㄴ toggle: show() <==> hide()
+    */
+
+    $(document).ready(function() {
+      $('#show').on('click', function() {
+        $('#img-city').show(3000);
+      })
+      $('#hide').on('click', function() {
+        $('#img-city').hide(3000);
+      })
+      $('#toggle').on('click', function(){
+        $('#box').toggle(2000);
+      })
+    })
+  </script>
+
+  <h2>show, hide, toggle 메소드</h2>
+
+  <button id="show">show</button>
+  <button id="hide">hide</button>
+  <button id="toggle">toggle</button>
+  <br><br>
+
+  <img src="../assets/image/city1.jpg" width="300px" id="img-city">
+
+  <div id="box" style="width:100px; height:100px; background:red">box</div>
+
+  <hr>
+
+  <script>
+    /*
+      * fadeIn, fadeOut, fadeToggle, fadeTo 메소드
+        1. 요소의 투명도(opacity)가 조정되면서 보여지고 사라지는 효과의 메소드
+        2. 사용법
+           요소.fadeIn|fadeOut|fadeToggle(['ms'])
+           ㄴ fadeIn     : 투명도가 선명해지면서 display를 기존 상태로 처리
+           ㄴ fadeOut    : 투명도가 투명해지면서 display를 최종 none 처리
+           ㄴ fadeToggle : fadeIn() <=> fadeOut()
+
+           요소.fadeTo('ms', opacity값)
+           ㄴ fadeTo     : 해당 요소의 opacity값을 전달된 값으로 처리
+    */
+
+    $(document).ready(function() {
+      $('#fadeIn').on('click', function() {
+        $('#img-flower').fadeIn(2000);
+      })
+      $('#fadeOut').on('click', function() {
+        $('#img-flower').fadeOut(2000);
+      })
+      $('#fadeToggle').on('click', function() {
+        $('#img-flower').fadeToggle(2000);
+      })
+      $('#fadeTo').on('click', function(){
+        $('#img-flower').fadeTo(2000, 0.5);
+      })
+    })
+  </script>
+
+  <button id="fadeIn">fadeIn</button>
+  <button id="fadeOut">fadeOut</button>
+  <button id="fadeToggle">fadeToggle</button>
+  <button id="fadeTo">fadeTo</button>
+
+  <br><br>
+
+  <img src="../assets/image/flower5.jpg" width="100px" id="img-flower">
+
+  <hr>
+
+  <script>
+    /*
+      * slideUp, slideDown, slideToggle
+        1. 요소의 세로 크기가 조정되면서 보여지고 사라지는 효과의 메소드
+        2. 사용법
+           요소.slideUp|slideDown|slideToggle(['ms'])
+           ㄴ slideUp     : 높이가 줄어들면서 display 최종 none으로
+           ㄴ slideDown   : 높이가 늘어나면서 display 기존 상태로 
+           ㄴ slideToggle : slideUp() <=> slideDown()
+    */
+  </script>
+
+
+  
+</body>
+</html>
