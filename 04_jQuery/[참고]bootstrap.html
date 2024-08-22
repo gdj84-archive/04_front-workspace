@@ -35,9 +35,294 @@
 
   <hr>
 
-  
+  <div class="container border mt-3 p-3">
+
+    <h1>grid</h1>
+    <p>
+      레이아웃을 보다 편하게 잡을 수 있고 반응형도 적용 시킬수 있음 <br>
+      가로로 총 12개의 column 존재할 수 있음 <br>
+      해당 column을 row로 group 지어서 배치 <br>
+
+      .col : 균등한 사이즈로 분할 <br>
+      .col-크기 : 해당 사이즈로 분할 (단, 12개를 초과해서는 안됨)
+    </p>
+
+    <div class="row m-3">
+      <!-- .col만 두게 되면 균등하게 분할됨 -->
+      <div class="col border">.col</div>
+      <div class="col border">.col</div>
+      <div class="col border">.col</div>
+    </div>
+
+    <div class="row m-3">
+      <!-- .col-* 로 각각의 사이즈 조절 가능 (단, 총 12로 맞추기) -->
+      <div class="col-2 border">.col</div>
+      <div class="col-2 border">.col</div>
+      <div class="col-8 border">.col</div>
+    </div>
+
+    <div class="row m-3">
+      <div class="col-4 border">.col</div>
+      <div class="col-6 border">.col</div>
+      <div class="col-2 border">.col</div>
+    </div>
+
+  </div>
+
+  <div class="container border mt-3 p-3">
+    <h1>grid - 반응형</h1>
+    <p>This is some text.</p>
+
+    <div class="row m-3">
+      <div class="col-sm-4 border">.col</div>
+      <div class="col-sm-6 border">.col</div>
+      <div class="col-sm-2 border">.col</div>
+    </div>
+
+  </div>
+
+  <hr>
+
+  <div class="container border mt-3 p-3">
+    <h1>table</h1>
+    <p>This is some text.</p>
+
+    <div class="row m-3">
+      <div class="col">
+        .table 디자인
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Firstname</th>
+              <th>Lastname</th>
+              <th>Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="table-success">
+              <td>John</td>
+              <td>Doe</td>
+              <td>john@example.com</td>
+            </tr>
+            <tr>
+              <td>Mary</td>
+              <td>Moe</td>
+              <td>mary@example.com</td>
+            </tr>
+            <tr>
+              <td>July</td>
+              <td>Dooley</td>
+              <td>july@example.com</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col">
+        .table.table-striped 디자인
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Firstname</th>
+              <th>Lastname</th>
+              <th>Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>John</td>
+              <td>Doe</td>
+              <td>john@example.com</td>
+            </tr>
+            <tr>
+              <td>Mary</td>
+              <td>Moe</td>
+              <td>mary@example.com</td>
+            </tr>
+            <tr>
+              <td>July</td>
+              <td>Dooley</td>
+              <td>july@example.com</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="row m-3">
+      <div class="col">
+        .table.table-bordered 디자인
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Firstname</th>
+              <th>Lastname</th>
+              <th>Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>John</td>
+              <td>Doe</td>
+              <td>john@example.com</td>
+            </tr>
+            <tr>
+              <td>Mary</td>
+              <td>Moe</td>
+              <td>mary@example.com</td>
+            </tr>
+            <tr>
+              <td>July</td>
+              <td>Dooley</td>
+              <td>july@example.com</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col">
+        .table.table-hover 디자인
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Firstname</th>
+              <th>Lastname</th>
+              <th>Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>John</td>
+              <td>Doe</td>
+              <td>john@example.com</td>
+            </tr>
+            <tr>
+              <td>Mary</td>
+              <td>Moe</td>
+              <td>mary@example.com</td>
+            </tr>
+            <tr>
+              <td>July</td>
+              <td>Dooley</td>
+              <td>july@example.com</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <hr>
+
+  <div class="container border mt-3 p-3">
+    <h1>button</h1>
+    <p>This is some text.</p>
+
+    <div class="row m-3">
+      <div class="col">
+        .btn.btn-종류 디자인 <br>
+        <button type="button" class="btn">Basic</button>
+        <button type="button" class="btn btn-primary">Primary</button>
+        <button type="button" class="btn btn-secondary">Secondary</button>
+        <button type="button" class="btn btn-success">Success</button>
+        <button type="button" class="btn btn-info">Info</button>
+        <button type="button" class="btn btn-warning">Warning</button>
+        <button type="button" class="btn btn-danger">Danger</button>
+        <button type="button" class="btn btn-dark">Dark</button>
+        <button type="button" class="btn btn-light">Light</button>
+        <button type="button" class="btn btn-link">Link</button>
+      </div>
+    </div>
+
+    <div class="row m-3">
+      <div class="col">
+        .btn.btn-sm.btn-종류 디자인 <br>
+        <button type="button" class="btn btn-sm">Basic</button>
+        <button type="button" class="btn btn-sm btn-primary">Primary</button>
+        <button type="button" class="btn btn-sm btn-secondary">Secondary</button>
+        <button type="button" class="btn btn-sm btn-success">Success</button>
+        <button type="button" class="btn btn-sm btn-info">Info</button>
+        <button type="button" class="btn btn-sm btn-warning">Warning</button>
+        <button type="button" class="btn btn-sm btn-danger">Danger</button>
+        <button type="button" class="btn btn-sm btn-dark">Dark</button>
+        <button type="button" class="btn btn-sm btn-light">Light</button>
+        <button type="button" class="btn btn-sm btn-link">Link</button>
+      </div>
+    </div>
+
+    <div class="row m-3">
+      <div class="col">
+        .btn.btn-outline-종류 디자인 <br>
+        <button type="button" class="btn btn-outline-primary">Primary</button>
+        <button type="button" class="btn btn-outline-secondary">Secondary</button>
+        <button type="button" class="btn btn-outline-success">Success</button>
+        <button type="button" class="btn btn-outline-info">Info</button>
+        <button type="button" class="btn btn-outline-warning">Warning</button>
+        <button type="button" class="btn btn-outline-danger">Danger</button>
+        <button type="button" class="btn btn-outline-dark">Dark</button>
+        <button type="button" class="btn btn-outline-light">Light</button>
+      </div>
+    </div>
+
+    <div class="row m-3">
+      <div class="col">
+        .btn-block 추가 디자인 <br>
+        <button type="button" class="btn btn-primary btn-block">Full-Width Button</button>
+      </div>
+    </div>
+
+    <div class="row m-3">
+      <div class="col">
+        <button class="btn btn-danger">
+          <span class="spinner-border spinner-border-sm"></span>
+        </button>
+        <button class="btn btn-warning">
+          <span class="spinner-border spinner-border-sm"></span>
+          Loading..
+        </button>
+        <button class="btn btn-secondary" disabled>
+          <span class="spinner-border spinner-border-sm"></span>
+          Loading..
+        </button>
+        <button class="btn btn-success" disabled>
+          <span class="spinner-grow spinner-grow-sm"></span>
+          Loading..
+        </button>
+      </div>
+    </div>
+
+    <div class="row m-3">
+      <div class="col">
+        <a href="http://www.naver.com" target="_blank" class="btn btn-success btn-lg">네이버로 이동</a>
+      </div>
+    </div>
+
+  </div>
+
+  <hr>
+
+  <div class="container border mt-3 p-3">
+    <h1>input</h1>
+    <p>This is some text.</p>
+
+    <div class="row m-3">
+      <div class="col">
+
+      </div>
+      <div class="col">
+        
+      </div>
+    </div>
+  </div>
 
 
+
+
+
+
+
+
+
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
   
 </body>
 </html>
